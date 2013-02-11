@@ -1,0 +1,62 @@
+<head>
+  <title>Stack Underflow</title>
+</head>
+<body>
+  {{> container}}
+</body>
+
+<!-- partial templates below -->
+
+<template name="header">
+  <h1>Stack Underflow</h1>
+  {{#unless currentUser.username}}
+    <h3>Please sign in with the button to the right! ----></h3>
+  {{/unless}}
+  {{#if currentUser.username}}
+    <div>Hi, {{currentUser.username}}!</div>
+  {{/if}}
+  <nav class="nav">
+    <ul class="nav nav-pills">
+      <li><a class="internal" href="/">Home</a></li>
+      <li><a class="internal" href="">OtherNav</a></li>
+    </ul>
+  </nav>
+</template>
+
+<template name="questions_list">
+  {{#each questions}}
+    {{> question}}
+    {{#if clickedReply}}
+      {{> new_reply}}
+    {{/if}}
+  {{/each}}
+</template>
+
+<template name="container">
+  <div class="container-fluid">
+    <div class="pull-right">
+      {{loginButtons align="right"}}
+    </div>
+    {{> header}}
+    <div class="row-fluid">
+      {{> content_pane}}
+      {{> sidebar}}
+    </div>
+    <footer>
+      <small>Built with Meteor by @rossetti211</small>
+    </footer>
+  </div>
+</template>
+
+<template name="content_pane">
+  <div class="span8">
+    {{#if logged_in}}
+      <section>
+        {{> questions_list}}
+      </section>
+      <section>
+        {{> new_question}}
+      </section>
+    {{/if}}
+  </div>
+</template>

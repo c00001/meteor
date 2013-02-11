@@ -1,0 +1,47 @@
+<template name="question">
+  <div class="well">
+    <div>
+      <h4 class="questionheader" id="questiontitle"><a class="internal" href="">{{subject}}</a></h4>
+      {{#unless clickedSubject}}
+        <small>{{metoos}} others have this question</small>
+      {{/unless}}
+    </div>
+    {{#if clickedSubject}}
+      <p>{{body}}</p>
+      <small>{{author}}</small>
+      <small>{{createdat}}</small>
+      <div>{{metoos}} others have this question</div>
+      <input class="btn metoo" type="button" value="Me too!" />
+      <h4 class="offset1">Replies</h4>
+      {{#each replies}}
+        {{> reply}}
+      {{/each}}
+      <input class="offset1 btn reply" type="button" value="Reply" />
+    {{/if}}
+  </div>
+</template>
+
+<template name="new_question">
+  <form class="well">
+    <input id="new_question_subject" type="text" placeholder="Subject" />
+    <textarea id="new_question_body" col="80" row="10" class="input-xxlarge postbox" placeholder="Please write your question thoughtfully and clearly here!"></textarea>
+    <input class="btn btn-primary" type="button" value="Post" />
+  <form>
+</template>
+
+<template name="reply">
+  {{#each replies}}
+    <blockquote class="offset1">
+      <p>{{replyBody}}</p>
+      <small>{{author}}</small>
+      <small>{{replyTime}}</small>
+    </blockquote>
+  {{/each}}
+</template>
+
+<template name="new_reply">
+  <form>
+    <textarea id="new_reply_body" col="80" row="10" class="input-xxlarge postbox" placeholder="What's your fresh idea for the OP?"></textarea>
+    <input class="btn" type="button" value="Submit" />
+  </form>
+</template>

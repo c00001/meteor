@@ -1,0 +1,22 @@
+<template name="sidebar">
+  <div class="span4 well">
+    <h4>User Profiles</h4>
+    <ul>
+      {{#each users_list}}
+        {{> user_profile}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="user_profile">
+  <li><a class="internal username" href="">{{username}}</a>
+    {{#if profileClicked}}
+      <ul>
+        {{#each user_questions}}
+          <li><a class="internal user_question" href="">{{subject}}</a></li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </li>
+</template>

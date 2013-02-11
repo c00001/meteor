@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+
+.postbox {
+  resize: vertical;
+  display: block;
+}
+
+.questionheader {
+  display: inline;
+  margin-right: 20px
+}
